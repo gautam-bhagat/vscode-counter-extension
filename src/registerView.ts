@@ -9,6 +9,7 @@ const template = (params: {
   csp: string;
   view: ViewKey;
   srcUri: string;
+  styleUri: string;
   publicPath: string;
   title: string;
   nonce: string;
@@ -19,6 +20,8 @@ const template = (params: {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${params.title}</title>
+    <link href=${params.styleUri}  rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta http-equiv="Content-Security-Policy" content="${params.csp}" />
   </head>
 
@@ -93,10 +96,13 @@ const setViewHtml = <V extends ViewKey>(
           `connect-src 'self' ${webview.cspSource} ${DEV_SERVER_HOST} ws:;`,
         ]
   ).join(" ");
-
+  const styleUri = webview
+    .asWebviewUri(vscode.Uri.joinPath(ctx.extensionUri, "media", "styles.css"))
+    .toString();
   webview.html = template({
     title: "Example",
     csp,
+    styleUri,
     srcUri,
     publicPath,
     view: viewId,

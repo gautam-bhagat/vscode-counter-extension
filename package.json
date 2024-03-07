@@ -1,5 +1,5 @@
 {
-  "name": "vscode-react-webviews",
+  "name": "counter-vscode",
   "private": true,
   "displayName": "Webview Extension",
   "description": "Fun with VS Code extension Webviews.",
@@ -56,15 +56,15 @@
       "activitybar": [
         {
           "id": "exampleActivityBarContainer",
-          "title": "example",
-          "icon": "static/jersey.svg"
+          "title": "Counter",
+          "icon": "static/add.svg"
         }
       ],
       "panel": [
         {
           "id": "examplePanelContainer",
-          "title": "example",
-          "icon": "static/jersey.svg"
+          "title": "Counter",
+          "icon": "static/add.svg"
         }
       ]
     },
@@ -73,14 +73,7 @@
         {
           "id": "exampleViewA",
           "type": "webview",
-          "name": "View A"
-        }
-      ],
-      "examplePanelContainer": [
-        {
-          "id": "exampleViewB",
-          "type": "webview",
-          "name": "View B"
+          "name": ""
         }
       ]
     }

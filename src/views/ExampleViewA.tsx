@@ -5,30 +5,78 @@ export const ExampleViewA = () => {
   const { callApi } = useContext(WebviewContext);
   const [bMessage, setBMessage] = useState<string>("");
 
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
+  const reset = () => {
+    setCount(0);
+  };
+
   return (
     <div>
-      <div style={{ display: "flex" }}>
-        <button
-          onClick={() => {
-            callApi("showExampleViewB");
-          }}
-        >
-          Show Example View B
-        </button>
+      <h3>VSCode Extension Counter Demo</h3>
+      <div style={{ textAlign: "center", margin: "70px" }}>
+        <p>You have pushed the button this many times:</p>
+        <p style={{ fontSize: "26px" }}>
+          <b>{count}</b>
+        </p>
       </div>
-      <div style={{ display: "flex", marginTop: 10 }}>
-        <input
-          type="text"
-          value={bMessage}
-          onChange={(e) => setBMessage(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            callApi("sendMessageToExampleB", bMessage);
-            setBMessage("");
+      <div
+        style={{
+          color: "white",
+          display: "flex",
+          marginTop: "40px",
+          justifyContent: "space-around",
+        }}
+      >
+        {/* <button
+          style={{
+            color: "white",
+            fontSize: "18px",
+            backgroundColor: "#0066BB",
+            borderRadius: "5px",
+            padding: "10px",
+            border: "none",
           }}
+          onClick={decrement}
         >
-          Send to Example View B
+          Decrement
+        </button> */}
+        <button
+          style={{
+            color: "white",
+            fontSize: "18px",
+            backgroundColor: "#0066BB",
+            borderRadius: "1px",
+            padding: "10px",
+            border: "none",
+          }}
+          onClick={increment}
+        >
+          Increment
+        </button>
+
+        <button
+          style={{
+            color: "white",
+            fontSize: "18px",
+            backgroundColor: "#0066BB",
+            borderRadius: "1px",
+            padding: "10px",
+            border: "none",
+          }}
+          onClick={reset}
+        >
+          Reset
         </button>
       </div>
     </div>
