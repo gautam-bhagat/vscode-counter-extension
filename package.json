@@ -1,18 +1,22 @@
 {
   "name": "counter-vscode",
   "private": true,
-  "displayName": "Webview Extension",
-  "description": "Fun with VS Code extension Webviews.",
-  "version": "1.2.2",
+  "publisher": "GautamBhagat",
+  "displayName": "Counter Demo",
+  "description": "Fun with VS Code extension",
+  "version": "1.2.3",
   "engines": {
     "vscode": "^1.83.1",
     "node": "~18.17.0",
     "npm": "^9.6.7"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gautam-bhagat/vscode-counter-extension.git"
+  },
   "tags": [],
   "categories": [],
-  "publisher": "example",
-  "main": "extension.js",
+  "main": "./dist/extension.js",
   "scripts": {
     "bundle": "webpack --mode production && webpack --mode production --config ./webpack.config.views.js",
     "build": "rm -rf dist && mkdir -p build && npm run bundle && node scripts/build.js",
